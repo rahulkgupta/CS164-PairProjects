@@ -1,4 +1,4 @@
-.card1 {
+#card1 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -12,7 +12,7 @@
   top: 5.00em;
 }
 
-.card2 {
+#card2 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -26,7 +26,7 @@
   top: 5.00em;
 }
 
-.card3 {
+#card3 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -40,7 +40,7 @@
   top: 5.00em;:
 }
 
-.card4 {
+#card4 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -54,7 +54,7 @@
   top: 5.00em;:
 }
 
-.card5 {
+#card5 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -68,7 +68,7 @@
   top: 5.00em;:
 }
 
-.stack1 {
+#stack1 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -82,7 +82,7 @@
   top: 14.00em;
 }
 
-.stack2 {
+#stack2 {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
