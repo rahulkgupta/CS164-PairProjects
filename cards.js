@@ -17,6 +17,8 @@ $(document).ready(function() {
   function setCard(card, i) {
     $("#card"+(i+1)).show();
     $("#card"+(i+1)).removeClass("empty")
+    $("#card"+(i+1)).addClass("shadow")
+    $("#card"+(i+1)).addClass("rounded")
     $("#card"+(i+1)).addClass(getColor(card))
     $("#card"+(i+1)).find(".number").html(card[1])
     $("#card"+(i+1)).find(".number2").html(card[1])
@@ -76,6 +78,8 @@ $(document).ready(function() {
     $(this).removeClass("black");
     $(this).removeClass("red");
     $(this).removeClass("red");
+    $(this).removeClass("shadow");
+    $(this).removeClass("rounded");
     $(this).addClass("empty")
     $(this).find(".number").empty()
     $(this).find(".number2").empty()
@@ -103,7 +107,9 @@ $(document).ready(function() {
 
   });
 
-
+  $("#dealing-pile").mouseover(function() {
+    console.log("mouseover")
+  });
 
 
   $("#dealing-pile").click(function() {
@@ -123,7 +129,7 @@ $(document).ready(function() {
 
       if (j == -1){
 
-        j = Math.floor(Math.random()*5)
+        j = Math.floor(Math.random()*5);
       }
 
       console.log(j)
@@ -131,30 +137,32 @@ $(document).ready(function() {
       $("#card"+(j+1)).removeClass("black");
       $("#card"+(j+1)).removeClass("red");
       $("#card"+(j+1)).addClass("empty")
-      $("#card"+(j+1)).find(".number").empty()
-      $("#card"+(j+1)).find(".number2").empty()
-      $("#card"+(j+1)).find(".suit").empty()
-      $("#card"+(j+1)).find(".suit2").empty()
-      $("#card"+(j+1)).find(".ace").empty()
-      $("#card"+(j+1)).find(".spotA1").empty()
-      $("#card"+(j+1)).find(".spotA2").empty()
-      $("#card"+(j+1)).find(".spotA3").empty()
-      $("#card"+(j+1)).find(".spotA4").empty()
-      $("#card"+(j+1)).find(".spotA5").empty()
-      $("#card"+(j+1)).find(".spotB1").empty()
-      $("#card"+(j+1)).find(".spotB2").empty()
-      $("#card"+(j+1)).find(".spotB3").empty()
-      $("#card"+(j+1)).find(".spotB4").empty()
-      $("#card"+(j+1)).find(".spotB5").empty()
-      $("#card"+(j+1)).find(".spotC1").empty()
-      $("#card"+(j+1)).find(".spotC2").empty()
-      $("#card"+(j+1)).find(".spotC3").empty()
-      $("#card"+(j+1)).find(".spotC4").empty()
-      $("#card"+(j+1)).find(".spotC5").empty()
+      $("#card"+(j+1)).removeClass("shadow");
+      $("#card"+(j+1)).removeClass("rounded");
+      $("#card"+(j+1)).find(".number").empty();
+      $("#card"+(j+1)).find(".number2").empty();
+      $("#card"+(j+1)).find(".suit").empty();
+      $("#card"+(j+1)).find(".suit2").empty();
+      $("#card"+(j+1)).find(".ace").empty();
+      $("#card"+(j+1)).find(".spotA1").empty();
+      $("#card"+(j+1)).find(".spotA2").empty();
+      $("#card"+(j+1)).find(".spotA3").empty();
+      $("#card"+(j+1)).find(".spotA4").empty();
+      $("#card"+(j+1)).find(".spotA5").empty();
+      $("#card"+(j+1)).find(".spotB1").empty();
+      $("#card"+(j+1)).find(".spotB2").empty();
+      $("#card"+(j+1)).find(".spotB3").empty();
+      $("#card"+(j+1)).find(".spotB4").empty();
+      $("#card"+(j+1)).find(".spotB5").empty();
+      $("#card"+(j+1)).find(".spotC1").empty();
+      $("#card"+(j+1)).find(".spotC2").empty();
+      $("#card"+(j+1)).find(".spotC3").empty();
+      $("#card"+(j+1)).find(".spotC4").empty();
+      $("#card"+(j+1)).find(".spotC5").empty();
 
-      var randomnum = Math.floor(Math.random()*cards.length)
-      var topCard = cards.splice(randomnum, 1) [0]
-      setCard(topCard, j)
+      var randomnum = Math.floor(Math.random()*cards.length);
+      var topCard = cards.splice(randomnum, 1) [0];
+      setCard(topCard, j);
     }
     
 
