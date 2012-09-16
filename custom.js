@@ -57,6 +57,20 @@ $(document).ready(function() {
       return "black"
   }
 
+  $(".card").click(function() {
+    $(this).removeClass("black");
+    $(this).removeClass("red");
+    $(this).addClass("empty")
+    $(this).find(".number").empty()
+    $(this).find(".number2").empty()
+    $(this).find(".suite").empty()
+    $(this).find(".suite2").empty()
+    $(this).find(".ace").empty()
+    $(this).fadeOut();
+    // alert(newCard.toString());
+
+  });
+
   function getSuite(card) {
     var val = card[0]
     if (val == "h")
