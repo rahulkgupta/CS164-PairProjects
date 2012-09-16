@@ -1,335 +1,177 @@
-function Card(rank, suit) {
+//Cards.js
 
-  this.rank = rank;
-  this.suit = suit;
+cards = [
+    ["h", 2], ["h", 3], ["h", 4], ["h", 5], ["h", 6],
+    ["c", 2], ["c", 3], ["c", 4], ["c", 5], ["c", 6],
+    ["s", 2], ["s", 3], ["s", 4], ["s", 5], ["s", 6],
+    ["d", 2], ["d", 3], ["d", 4], ["d", 5], ["d", 6]
+]
 
-  this.toString   = cardToString;
-  this.createNode = cardCreateNode;
-}
-
-function cardToString() {
-
-  var rank, suit;
-
-  switch (this.rank) {
-    case "A" :
-      rank = "Ace";
-      break;
-    case "2" :
-      rank = "Two";
-      break;
-    case "3" :
-      rank = "Three";
-      break;
-    case "4" :
-      rank = "Four";
-      break;
-    case "5" :
-      rank = "Five";
-      break;
-    case "6" :
-      rank = "Six";
-      break;
-    case "7" :
-      rank = "Seven";
-      break;
-    case "8" :
-      rank = "Eight";
-      break;
-    case "9" :
-      rank = "Nine";
-      break;
-    case "10" :
-      rank = "Ten";
-      break;
-    case "J" :
-      rank = "Jack"
-      break;
-    case "Q" :
-      rank = "Queen"
-      break;
-    case "K" :
-      rank = "King"
-      break;
-    default :
-      rank = null;
-      break;
+$(document).ready(function() {
+  for (i = 0; i < 5; i++) {
+    var randomnum = Math.floor(Math.random()*cards.length)
+    var card = cards.splice(randomnum, 1) [0]
+    setCard(card, i)
   }
 
-  switch (this.suit) {
-    case "C" :
-      suit = "Clubs";
-      break;
-    case "D" :
-      suit = "Diamonds"
-      break;
-    case "H" :
-      suit = "Hearts"
-      break;
-    case "S" :
-      suit = "Spades"
-      break;
-    default :
-      suit = null;
-      break;
-  }
+  function setCard(card, i) {
+    $("#card"+(i+1)).show();
+    $("#card"+(i+1)).removeClass("empty")
+    $("#card"+(i+1)).addClass(getColor(card))
+    $("#card"+(i+1)).find(".number").html(card[1])
+    $("#card"+(i+1)).find(".number2").html(card[1])
+    $("#card"+(i+1)).find(".suit").html(getSuit(card))
+    $("#card"+(i+1)).find(".suit2").html(getSuit(card))
 
-  if (rank == null || suit == null)
-    return "";
-
-  return rank + " of " + suit;
-}
-
-
-var cardImg0 = new Image(); cardImg0.src= "cardback.gif";
-var cardImg1 = new Image(); cardImg1.src= "jack.gif";
-var cardImg2 = new Image(); cardImg2.src= "queen.gif";
-var cardImg3 = new Image(); cardImg3.src= "king.gif";
-
-function cardCreateNode() {
-
-  var cardNode, frontNode, indexNode, spotNode, tempNode, textNode;
-  var indexStr, spotChar;
-
-  // This is the main node, a DIV tag.
-
-  cardNode = document.createElement("DIV");
-  cardNode.className = "card";
-
-  // Build the front of card.
-
-  frontNode = document.createElement("DIV");
-  frontNode.className = "front";
-
-  // Get proper character for card suit and change font color if necessary.
-
-  spotChar = "\u00a0";
-  switch (this.suit) {
-    case "C" :
-      spotChar = "\u2663";
-      break;
-    case "D" :
-      frontNode.className += " red";
-      spotChar = "\u2666";
-      break;
-    case "H" :
-      frontNode.className += " red";
-      spotChar = "\u2665";
-      break;
-    case "S" :
-      spotChar = "\u2660";
-      break;
-  }
-
-  // Create and add the index (rank) to the upper-left corner of the card.
-
-  indexStr = this.rank;
-  if (this.toString() == "")
-    indexStr = "\u00a0";
-  spotNode = document.createElement("DIV");
-  spotNode.className = "index";
-  textNode = document.createTextNode(indexStr);
-  spotNode.appendChild(textNode);
-  spotNode.appendChild(document.createElement("BR"));
-  textNode = document.createTextNode(spotChar);
-  spotNode.appendChild(textNode);
-  frontNode.appendChild(spotNode);
-
-  // Create and add spots based on card rank (Ace thru 10).
-
-  spotNode = document.createElement("DIV");
-  textNode = document.createTextNode(spotChar);
-  spotNode.appendChild(textNode);
-  if (this.rank == "A") {
-    spotNode.className = "ace";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "3" || this.rank == "5" || this.rank == "9") {
-    spotNode.className = "spotB3";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "2" || this.rank == "3") {
-    spotNode.className = "spotB1";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "2" || this.rank == "3") {
-    spotNode.className = "spotB5";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "4" || this.rank == "5" || this.rank == "6" ||
-      this.rank == "7" || this.rank == "8" || this.rank == "9" ||
-      this.rank == "10") {
-    spotNode.className = "spotA1";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotA5";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC1";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC5";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "6" || this.rank == "7" || this.rank == "8") {
-    spotNode.className = "spotA3";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC3";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "7" || this.rank == "8" || this.rank == "10") {
-    spotNode.className = "spotB2";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "8" || this.rank == "10") {
-    spotNode.className = "spotB4";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-  if (this.rank == "9" || this.rank == "10") {
-    spotNode.className = "spotA2";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotA4";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC2";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC4";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-
-  // For face cards (Jack, Queen or King), create and add the proper image.
-
-  tempNode = document.createElement("IMG");
-  tempNode.className = "face";
-  if (this.rank == "J")
-    tempNode.src = "graphics/jack.gif";
-  if (this.rank == "Q")
-    tempNode.src = "graphics/queen.gif";
-  if (this.rank == "K")
-    tempNode.src = "graphics/king.gif";
-
-  // For face cards, add suit characters to the upper-left and lower-right
-  // corners.
-
-  if (this.rank == "J" || this.rank == "Q" || this.rank == "K") {
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotA1";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-    spotNode.className = "spotC5";
-    tempNode = spotNode.cloneNode(true);
-    frontNode.appendChild(tempNode);
-  }
-
-  // Add front node to the card node.
-
-  cardNode.appendChild(frontNode);
-
-  // Return the card node.
-
-  return cardNode;
-}
-
-
-function Stack() {
-
-  // Create an empty array of cards.
-
-  this.cards = new Array();
-
-  this.makeDeck  = stackMakeDeck;
-  this.shuffle   = stackShuffle;
-  this.deal      = stackDeal;
-  this.draw      = stackDraw;
-  this.addCard   = stackAddCard;
-  this.combine   = stackCombine;
-  this.cardCount = stackCardCount;
-}
-
-//-----------------------------------------------------------------------------
-// stackMakeDeck(n): Initializes a stack using 'n' packs of cards.
-//-----------------------------------------------------------------------------
-
-function stackMakeDeck() {
-
-  var ranks = new Array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
-  var suits = new Array("C", "D", "H", "S");
-  var i, j, k;
-  var m;
-
-  m = ranks.length * suits.length;
-
-  // Set array of cards.
-
-  this.cards = new Array(m);
-
-
-  for (i = 0; i < suits.length; i++)
-    for (j = 0; j < ranks.length; j++)
-      this.cards[m + i * ranks.length + j] = new Card(ranks[j], suits[i]);
-}
-
-//-----------------------------------------------------------------------------
-// stackShuffle(n): Shuffles a stack of cards 'n' times. 
-//-----------------------------------------------------------------------------
-
-function stackShuffle(n) {
-
-  var i, j, k;
-  var temp;
-
-  // Shuffle the stack 'n' times.
-
-  for (i = 0; i < n; i++)
-    for (j = 0; j < this.cards.length; j++) {
-      k = Math.floor(Math.random() * this.cards.length);
-      temp = this.cards[j];
-      this.cards[j] = this.cards[k];
-      this.cards[k] = temp;
+    cardNum = card[1]
+    
+    if (cardNum == 2) {
+      $("#card"+(i+1)).find(".spotB2").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotB4").html(getSuit(card))
     }
-}
 
-//-----------------------------------------------------------------------------
-// stackDeal(): Removes the first card in the stack and returns it.
-//-----------------------------------------------------------------------------
+    if (cardNum == 3) {
+      $("#card"+(i+1)).find(".spotB1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotB3").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotB5").html(getSuit(card))
+    }
 
-function stackDeal() {
+    if (cardNum == 4) {
+      $("#card"+(i+1)).find(".spotA1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotA5").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC5").html(getSuit(card))
+    }
 
-  if (this.cards.length > 0)
-    return this.cards.shift();
-  else
-    return null;
-}
+    if (cardNum == 5) {
+      $("#card"+(i+1)).find(".spotA1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotA5").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotB3").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC5").html(getSuit(card))
+      
+    }
+
+    if (cardNum == 6) {
+      $("#card"+(i+1)).find(".spotA1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotA3").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotA5").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC1").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC3").html(getSuit(card))
+      $("#card"+(i+1)).find(".spotC5").html(getSuit(card))
+      
+    }
+  }
+
+  function getColor(card) {
+    var val = card[0]
+    if (val == "h" || val == "d") {
+      return "red"
+    }
+    else
+      return "black"
+  }
+
+  $(".card").click(function() {
+    $(this).removeClass("black");
+    $(this).removeClass("red");
+    $(this).removeClass("red");
+    $(this).addClass("empty")
+    $(this).find(".number").empty()
+    $(this).find(".number2").empty()
+    $(this).find(".suit").empty()
+    $(this).find(".suit2").empty()
+    $(this).find(".ace").empty()
+    $(this).find(".spotA1").empty()
+    $(this).find(".spotA2").empty()
+    $(this).find(".spotA3").empty()
+    $(this).find(".spotA4").empty()
+    $(this).find(".spotA5").empty()
+    $(this).find(".spotB1").empty()
+    $(this).find(".spotB2").empty()
+    $(this).find(".spotB3").empty()
+    $(this).find(".spotB4").empty()
+    $(this).find(".spotB5").empty()
+    $(this).find(".spotC1").empty()
+    $(this).find(".spotC2").empty()
+    $(this).find(".spotC3").empty()
+    $(this).find(".spotC4").empty()
+    $(this).find(".spotC5").empty()
+
+    $(this).hide();
+    // alert(newCard.toString());
+
+  });
 
 
-//-----------------------------------------------------------------------------
-// stackAdd(card): Adds the given card to the stack.
-//-----------------------------------------------------------------------------
-
-function stackAddCard(card) {
-
-  this.cards.push(card);
-}
 
 
-//-----------------------------------------------------------------------------
-// stackCardCount(): Returns the number of cards currently in the stack.
-//-----------------------------------------------------------------------------
+  $("#dealing-pile").click(function() {
+    
+    var j = -1;
 
-function stackCardCount() {
+    if (cards.length > 0) {
+      
 
-  return this.cards.length;
-}
+      for (i = 0; i < 5; i++) {
+        if ($("#card"+(i+1)).hasClass("card empty")){
+          j = i;
+          break;
+        }
+        
+      }
 
+      if (j == -1){
+
+        j = Math.floor(Math.random()*5)
+      }
+
+      console.log(j)
+
+      $("#card"+(j+1)).removeClass("black");
+      $("#card"+(j+1)).removeClass("red");
+      $("#card"+(j+1)).addClass("empty")
+      $("#card"+(j+1)).find(".number").empty()
+      $("#card"+(j+1)).find(".number2").empty()
+      $("#card"+(j+1)).find(".suit").empty()
+      $("#card"+(j+1)).find(".suit2").empty()
+      $("#card"+(j+1)).find(".ace").empty()
+      $("#card"+(j+1)).find(".spotA1").empty()
+      $("#card"+(j+1)).find(".spotA2").empty()
+      $("#card"+(j+1)).find(".spotA3").empty()
+      $("#card"+(j+1)).find(".spotA4").empty()
+      $("#card"+(j+1)).find(".spotA5").empty()
+      $("#card"+(j+1)).find(".spotB1").empty()
+      $("#card"+(j+1)).find(".spotB2").empty()
+      $("#card"+(j+1)).find(".spotB3").empty()
+      $("#card"+(j+1)).find(".spotB4").empty()
+      $("#card"+(j+1)).find(".spotB5").empty()
+      $("#card"+(j+1)).find(".spotC1").empty()
+      $("#card"+(j+1)).find(".spotC2").empty()
+      $("#card"+(j+1)).find(".spotC3").empty()
+      $("#card"+(j+1)).find(".spotC4").empty()
+      $("#card"+(j+1)).find(".spotC5").empty()
+
+      var randomnum = Math.floor(Math.random()*cards.length)
+      var topCard = cards.splice(randomnum, 1) [0]
+      setCard(topCard, j)
+    }
+    
+
+
+  });
+
+  function getSuit(card) {
+    var val = card[0]
+    if (val == "h")
+      return "&hearts;"
+    else if (val == "s")
+      return "&spades;"
+    else if (val == "c")
+      return "&clubs;"
+    else
+      return "&diams;"
+
+  }
+
+})
