@@ -80,27 +80,27 @@ $(document).ready(function() {
     $(this).removeClass("red");
     $(this).removeClass("shadow");
     $(this).removeClass("rounded");
-    $(this).addClass("empty")
-    $(this).find(".number").empty()
-    $(this).find(".number2").empty()
-    $(this).find(".suit").empty()
-    $(this).find(".suit2").empty()
-    $(this).find(".ace").empty()
-    $(this).find(".spotA1").empty()
-    $(this).find(".spotA2").empty()
-    $(this).find(".spotA3").empty()
-    $(this).find(".spotA4").empty()
-    $(this).find(".spotA5").empty()
-    $(this).find(".spotB1").empty()
-    $(this).find(".spotB2").empty()
-    $(this).find(".spotB3").empty()
-    $(this).find(".spotB4").empty()
-    $(this).find(".spotB5").empty()
-    $(this).find(".spotC1").empty()
-    $(this).find(".spotC2").empty()
-    $(this).find(".spotC3").empty()
-    $(this).find(".spotC4").empty()
-    $(this).find(".spotC5").empty()
+    $(this).addClass("empty");
+    $(this).find(".number").empty();
+    $(this).find(".number2").empty();
+    $(this).find(".suit").empty();
+    $(this).find(".suit2").empty();
+    $(this).find(".ace").empty();
+    $(this).find(".spotA1").empty();
+    $(this).find(".spotA2").empty();
+    $(this).find(".spotA3").empty();
+    $(this).find(".spotA4").empty();
+    $(this).find(".spotA5").empty();
+    $(this).find(".spotB1").empty();
+    $(this).find(".spotB2").empty();
+    $(this).find(".spotB3").empty();
+    $(this).find(".spotB4").empty();
+    $(this).find(".spotB5").empty();
+    $(this).find(".spotC1").empty();
+    $(this).find(".spotC2").empty();
+    $(this).find(".spotC3").empty();
+    $(this).find(".spotC4").empty();
+    $(this).find(".spotC5").empty();
 
     $(this).hide();
     // alert(newCard.toString());
@@ -163,6 +163,15 @@ $(document).ready(function() {
       var randomnum = Math.floor(Math.random()*cards.length);
       var topCard = cards.splice(randomnum, 1) [0];
       setCard(topCard, j);
+
+
+    }
+    else {
+      $(this).removeClass("shadow");
+      $(this).removeClass("rounded");
+      $(this).addClass("empty");
+      $(this).hide();
+
     }
     
 
