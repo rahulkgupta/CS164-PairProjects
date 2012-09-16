@@ -1,9 +1,7 @@
 #card1 {
-  background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  color: #000000;
   font-size: 20pt;
   position: absolute;
   width:  3.75em;
@@ -13,11 +11,9 @@
 }
 
 #card2 {
-  background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  color: #000000;
   font-size: 20pt;
   position: absolute;
   width:  3.75em;
@@ -27,11 +23,9 @@
 }
 
 #card3 {
-  background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  color: #000000;
   font-size: 20pt;
   position: absolute;
   width:  3.75em;
@@ -41,11 +35,9 @@
 }
 
 #card4 {
-  background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  color: #000000;
   font-size: 20pt;
   position: absolute;
   width:  3.75em;
@@ -55,11 +47,9 @@
 }
 
 #card5 {
-  background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  color: #000000;
   font-size: 20pt;
   position: absolute;
   width:  3.75em;
@@ -68,7 +58,7 @@
   top: 5.00em;:
 }
 
-#stack1 {
+#dealing-pile {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -82,7 +72,7 @@
   top: 14.00em;
 }
 
-#stack2 {
+#discard-pile {
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
@@ -106,6 +96,7 @@
 
 .red { color: #ff0000; }
 
+.black {color: #000000; }
 .ace {
   font-size: 300%;
   position: absolute;
