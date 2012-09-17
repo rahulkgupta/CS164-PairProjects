@@ -7,11 +7,15 @@ cards = [
     ["d", 2], ["d", 3], ["d", 4], ["d", 5], ["d", 6]
 ]
 
+discardPile = []
+
+
 $(document).ready(function() {
   for (i = 0; i < 5; i++) {
     var randomnum = Math.floor(Math.random()*cards.length)
     var card = cards.splice(randomnum, 1) [0]
     setCard(card, i)
+    $("#discard-pile").hide();
   }
 
   function setCard(card, i) {
@@ -101,14 +105,15 @@ $(document).ready(function() {
     $(this).find(".spotC3").empty();
     $(this).find(".spotC4").empty();
     $(this).find(".spotC5").empty();
-
     $(this).hide();
-    // alert(newCard.toString());
+    $("#discard-pile").show();
+
+
 
   });
 
   $("#dealing-pile").mouseover(function() {
-    console.log("mouseover")
+    // console.log("mouseover")
   });
 
 
@@ -130,9 +135,8 @@ $(document).ready(function() {
       if (j == -1){
 
         j = Math.floor(Math.random()*5);
+        $("#discard-pile").show();
       }
-
-      console.log(j)
 
       $("#card"+(j+1)).removeClass("black");
       $("#card"+(j+1)).removeClass("red");
