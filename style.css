@@ -81,6 +81,21 @@ span{ display: block; }
   top: 420px;
 }
 
+#movable-card {
+  background-color: white;
+  background-image: url("cardback.gif");
+  border-color: #808080 #000000 #000000 #808080;
+  border-width: 5px;
+  border-style: solid;
+  color: #000000;
+  font-size: 30px;
+  position: absolute;
+  width:  116px;
+  height: 158px;
+  left: 480px;
+  top: 420px;
+  z-index: -1;
+}
 #discard-pile {
   background-color: white;
   background-image: url("cardback.gif");

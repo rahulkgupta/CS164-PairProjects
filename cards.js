@@ -9,8 +9,9 @@ cards = [
 
 discardPile = []
 
-var dealx = 16
-var dealy = 14
+var movx = 480
+
+var movy = 420
 
 $(document).ready(function() {
   for (i = 0; i < 5; i++) {
@@ -108,24 +109,41 @@ $(document).ready(function() {
     $(this).find(".spotC4").empty();
     $(this).find(".spotC5").empty();
     $(this).hide();
-    $(this).animate({"left": "-=50px"}, "slow");
+    var cleft = parseInt($(this).css("left"),10)
+    var ctop = parseInt($(this).css("top"), 10)
+    var disleft = parseInt($("#discard-pile").css("left"),10)
+    var distop = parseInt($("#discard-pile").css("top"), 10)
+    var changex = disleft - cleft
+    var changey = distop - ctop
+    $('#movable-card').css("top",ctop)
+    $('#movable-card').css("left",cleft)
+    $('#movable-card').show()
+    var self = this;
+    $('#movable-card').animate({
+          "left": "+="+ changex+ "px", 
+          "top": "+=" + changey + "px"}, "slow", function () {
+        var randomnum = Math.floor(Math.random()*cards.length);
+        var topCard = cards.splice(randomnum, 1) [0];
+        $('#movable-card').css("top",movy)
+        $('#movable-card').css("left",movx)
+        $('#movable-card').hide()
+        $("#discard-pile").show();
+        
+      });
+    
     $("#discard-pile").show();
 
 
 
   });
 
-  $("#dealing-pile").mouseover(function() {
-    // console.log("mouseover")
-  });
+
 
 
   $("#dealing-pile").click(function() {
     
     var j = -1;
-
     if (cards.length > 0) {
-      
 
       for (i = 0; i < 5; i++) {
         if ($("#card"+(i+1)).hasClass("card empty")){
@@ -134,11 +152,28 @@ $(document).ready(function() {
         }
         
       }
-
+      $('#movable-card').show()
       if (j == -1){
-
         j = Math.floor(Math.random()*5);
-        $("#discard-pile").show();
+        $("#card"+(j+1)).hide()
+        var cleft = parseInt($("#card"+(j+1)).css("left"),10)
+        var ctop = parseInt($("#card"+(j+1)).css("top"), 10)
+        var disleft = parseInt($("#discard-pile").css("left"),10)
+        var distop = parseInt($("#discard-pile").css("top"), 10)
+        var changex = disleft - cleft
+        var changey = distop - ctop
+        $('#movable-card').css("top",ctop)
+        $('#movable-card').css("left",cleft)
+        
+        $('#movable-card').animate({
+            "left": "+="+ changex+ "px", 
+            "top": "+=" + changey + "px"}, "slow", function () {
+            $('#movable-card').css("top",movy)
+            $('#movable-card').css("left",movx)
+            $("#discard-pile").show();
+            
+          });
+        
       }
 
       $("#card"+(j+1)).removeClass("black");
@@ -167,22 +202,36 @@ $(document).ready(function() {
       $("#card"+(j+1)).find(".spotC4").empty();
       $("#card"+(j+1)).find(".spotC5").empty();
 
+      $('#movable-card').css("top",movy)
+      $('#movable-card').css("left",movx)
+      $("#discard-pile").show();
+      var left = parseInt($("#card"+(j+1)).css("left"),10)
+      var top = parseInt($("#card"+(j+1)).css("top"), 10)
+      var changex = left - movx
+      var changey = top - movy
+      var self = this
       var randomnum = Math.floor(Math.random()*cards.length);
       var topCard = cards.splice(randomnum, 1) [0];
+      if (cards.length == 0) {
+        $(self).removeClass("shadow");
+        $(self).removeClass("rounded");
+        $(self).addClass("empty");
+        $(self).hide();
+      }
+      $('#movable-card').animate({
+          "left": "+="+ changex+ "px", 
+          "top": "+=" + changey + "px"}, "slow", 
+          function () {  
+            $('#movable-card').css("top",movy)
+            $('#movable-card').css("left",movx)
+            $('#movable-card').hide()
+            $("#discard-pile").show();
+            setCard(topCard, j);
+        });
 
-
-      setCard(topCard, j);
 
 
     }
-    else {
-      $(this).removeClass("shadow");
-      $(this).removeClass("rounded");
-      $(this).addClass("empty");
-      $(this).hide();
-
-    }
-    
 
 
   });
