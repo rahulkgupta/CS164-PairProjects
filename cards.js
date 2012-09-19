@@ -9,6 +9,8 @@ cards = [
 
 discardPile = []
 
+var dealx = 16
+var dealy = 14
 
 $(document).ready(function() {
   for (i = 0; i < 5; i++) {
@@ -106,6 +108,7 @@ $(document).ready(function() {
     $(this).find(".spotC4").empty();
     $(this).find(".spotC5").empty();
     $(this).hide();
+    $(this).animate({"left": "-=50px"}, "slow");
     $("#discard-pile").show();
 
 
@@ -166,6 +169,8 @@ $(document).ready(function() {
 
       var randomnum = Math.floor(Math.random()*cards.length);
       var topCard = cards.splice(randomnum, 1) [0];
+
+
       setCard(topCard, j);
 
 
