@@ -8,38 +8,36 @@ span{ display: block; }
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 6.00em;
-  top: 5.00em;
-}
+  width:  116px;
+  height: 158px;
+  left: 130px;
+  top: 130px;}
 
 #card2 {
   background-color: white;
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 14.00em;
-  top: 5.00em;
-}
+  width:  116px;
+  height: 158px;
+  left: 370px;
+  top: 130px;}
 
 #card3 {
   background-color: white;
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 22.00em;
-  top: 5.00em;:
+  width:  116px;
+  height: 158px;
+  left: 610px;
+  top: 130px;
 }
 
 #card4 {
@@ -47,12 +45,12 @@ span{ display: block; }
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 30.00em;
-  top: 5.00em;:
+  width:  116px;
+  height: 158px;
+  left: 850px;
+  top: 130px;
 }
 
 #card5 {
@@ -60,12 +58,12 @@ span{ display: block; }
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 38.00em;
-  top: 5.00em;:
+  width:  116px;
+  height: 158px;
+  left: 1080px;
+  top: 130px;
 }
 
 #dealing-pile {
@@ -75,12 +73,12 @@ span{ display: block; }
   border-width: 5px;
   border-style: solid;
   color: #000000;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 16.00em;
-  top: 14.00em;
+  width:  116px;
+  height: 158px;
+  left: 480px;
+  top: 420px;
 }
 
 #discard-pile {
@@ -90,12 +88,12 @@ span{ display: block; }
   border-width: 5px;
   border-style: solid;
   color: #000000;
-  font-size: 20pt;
+  font-size: 30px;
   position: absolute;
-  width:  3.85em;
-  height: 5.25em;
-  left: 28.00em;
-  top: 14.00em;
+  width:  116px;
+  height: 158px;
+  left: 840px;
+  top: 420px;
 }
 
 .front {

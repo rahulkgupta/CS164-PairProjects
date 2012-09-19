@@ -106,6 +106,8 @@ $(document).ready(function() {
     $(this).find(".spotC4").empty();
     $(this).find(".spotC5").empty();
     $(this).hide();
+    //$(this).transition({ x: '200px', y: '20px' });
+
     $("#discard-pile").show();
 
 
